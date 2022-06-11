@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BillService } from '../service/bill.service';
 import { Bill } from '../model/index';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-bill',
@@ -67,38 +67,26 @@ export class BillComponentNew implements OnInit {
   });
   }
 
-  ngOnInit(): void {
-  }
-
-
-  new() {
-    
-    this.billService.getBills(this.username).subscribe(
-        (bills: Bill[]) => {
-            //this.bills = bills;
-        }
-    );
-  }
+  ngOnInit(): void {}
 
   validate(event: Event) {
     
     this.malFormato = false;
     event.preventDefault();
-        if(this.form.valid) {
-          this.bill.observation = this.form.value.description;
-          this.bill.value = this.form.value.value;
-          this.bill.user_id = 1;
-          this.bill.type = this.form.value.type;
+    if(this.form.valid) {
+      this.bill.observation = this.form.value.description;
+      this.bill.value = this.form.value.value;
+      this.bill.user_id = 1;
+      this.bill.type = this.form.value.type;
 
-          this.billService.saveBill(this.bill).subscribe(
-            (bill: Bill) => {
-              this.router.navigate(['/bill/list/' + this.username]);   
-            }
-        );
-        } else {
-          this.form.markAllAsTouched();
-          this.malFormato = true;
+      this.billService.saveBill(this.bill).subscribe(
+        (bill: Bill) => {
+          this.router.navigate(['/bill/list/' + this.username]);   
         }
-  }
-
+      );
+    } else {
+      this.form.markAllAsTouched();
+      this.malFormato = true;
+    }
+  } 
 }

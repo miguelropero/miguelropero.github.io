@@ -15,7 +15,7 @@
         <form class="login_form" [formGroup]="form" (ngSubmit)="validate($event)">
             <br>
             <b>Descripción</b>
-            <input class="user_login" formControlName="description" maxlength="15" #description
+            <input class="user_login" formControlName="description" maxlength="200" #description
             [ngClass]="form?.get('description')?.hasError('required') && form?.get('description')?.touched ? 'input_error': ''">
 
             <br><br>

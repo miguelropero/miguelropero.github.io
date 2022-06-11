@@ -61,6 +61,15 @@
     cursor: pointer;
 }
 
+.back {
+    background-color: #d1d1d1;
+    color: #333;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-left: 15px;
+}
+
 .input_error {
     border: 1px solid red !important;
 }

@@ -1,2 +1,38 @@
-<p>login works!</p>
+
+<div class="header" style="margin-left: 10px;">
+    <b>Bill Login</b>
+</div>
+
+<div style="margin-top: 15px; margin-bottom: 15px; margin-left: 10px;">
+    Bienvenido al sistema bill
+</div>
+
+<hr style="margin-left: 10px;">
+
+<div id="invoice-items-details" class="pt-2">
+    <div>
+      
+        <form class="login_form" [formGroup]="form" (ngSubmit)="validate($event)">
+            <br>
+            <b>Usuario</b>
+            <input class="user_login" formControlName="username" maxlength="30" #username
+            [ngClass]="form?.get('username')?.hasError('required') && form?.get('username')?.touched ? 'input_error': ''">
+            
+            <br><br>
+            <b>Password</b>
+            <input class="user_login" formControlName="password" maxlength="30" #password type="password"
+                [ngClass]="form?.get('password')?.hasError('required') && form?.get('password')?.touched ? 'input_error': ''">
+
+            <div style="text-align: center; margin-top: 5px; color: brown;">
+                <span *ngIf="error">Credenciales no válidas</span>
+            </div>
+
+            <div class="main_button">
+                <button type="submit">Ingresar</button>
+            </div>
+
+        </form>
+    </div>                                                    
+  </div>
+
 

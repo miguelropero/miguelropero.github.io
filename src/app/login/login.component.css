@@ -1,0 +1,82 @@
+.column {
+    float: left;
+    width: 50%;
+    vertical-align: middle;
+  }
+
+/* Clear floats after the columns */
+.row {
+    content: "";
+    display: table;
+    clear: both;
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px;
+}
+
+
+.right{
+    text-align: right;
+}
+
+.top15 {
+    margin-top: 15px;
+}
+
+.red {
+    color: red;
+}
+
+.none {
+    display: none;
+}
+
+.font10 {
+    font-size: 11px;
+    color: #333;
+}
+
+.buttom_div {
+    text-align: center;
+    display: block;
+    margin-top: 25px;
+}
+
+.buttom, .main_button button {
+    background-color: blueviolet;
+    color: #e1e1e1;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.main_button {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.main_button button {
+    border: none;
+    cursor: pointer;
+}
+
+.input_error {
+    border: 1px solid red !important;
+}
+
+.login_form {
+    text-align: left;
+}
+
+.user_login {
+    border: 1px solid #ccc;
+    padding: 10px 5px;
+    width: 100%;
+    margin-top: 3px;
+}
+
+.radio {
+    padding: 8px 0;
+    width: 100%;
+}
