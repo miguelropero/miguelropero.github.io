@@ -13,6 +13,8 @@ export class BillComponent implements OnInit {
 
   username: String = '';
   bills: Bill[] = [];
+  bill: Bill = new Bill(0,"",0,0,0,"");
+  viewList: boolean = true;
 
   constructor(
     private router: Router,
@@ -34,7 +36,27 @@ export class BillComponent implements OnInit {
           this.bills = bills;
         }
     );
-}
+  }
+
+  detail(bill: Bill){
+    this.viewList = false;
+    this.bill = bill;
+  }
+
+  close(){
+    this.bill = new Bill(0,"",0,0,0,"");
+    this.viewList = true;
+  }
+
+  delete(){
+    console.log(this.bill);
+    this.billService.deleteBill(this.bill).subscribe(
+      (bills: Bill) => {
+        this.list();
+        this.viewList = true;
+      }
+  );
+  }
 
 }
 

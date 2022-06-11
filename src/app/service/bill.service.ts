@@ -33,6 +33,14 @@ export class BillService {
     );
   }
 
+  deleteBill(bill: Bill): Observable<Bill> {
+    const apiUrl = environment.apiUrl + "bill/" + bill.id;
+    const headersApi = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
+    return this.http.delete<Bill>(apiUrl, {headers: headersApi}).pipe(
+      catchError(this.handleHttpError)
+    );
+  }
+
   public handleHttpError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -31,7 +31,7 @@
             
             <br>
             <b>Valor</b>
-            <input class="user_login" formControlName="value" maxlength="15" #value
+            <input class="user_login" formControlName="value" maxlength="10" #value
                 [ngClass]="form?.get('value')?.hasError('required') && form?.get('value')?.touched ? 'input_error': ''">
 
                 <span *ngIf="malFormato">Formato no válido</span>

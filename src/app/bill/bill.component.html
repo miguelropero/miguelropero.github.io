@@ -10,24 +10,49 @@
 <hr style="margin-left: 10px;">
 
 <div id="invoice-items-details" class="pt-2">
-    <div>
+    <div *ngIf="viewList">
       
+
         <div *ngFor="let bill of bills; let i=index">
             <div class="row">
                 <div class="column">
                     <span class="font10">{{ bill.date_bill }}</span> <br>
-                    {{ bill.observation }}
+                    <a (click)="detail(bill)">{{ bill.observation }}</a>
                 </div>
                 <div class="column right top15">
                     <b [ngClass]="{'red': bill.type > 1}" > <span [ngClass]="{'none': bill.type < 2}">-</span> $ {{ bill.value }}</b>
                 </div>
             </div>
         </div>
+
         <div class="buttom_div">
             <a [routerLink]="['/bill/new/']" [queryParams]="{username: username}" class="buttom" href="">Registrar</a>
             <a [routerLink]="['/']" class="buttom back" href="">Salir</a>
         </div>
-    </div>                                                    
+    </div>
+    
+    <div *ngIf="!viewList">
+        <div class="row">
+            <div class="column">
+                <span class="font10">{{ bill.date_bill }}</span> <br>
+                {{ bill.observation }}
+
+                <br>
+                <span *ngIf="bill.type == 2" style="color: red;">Retiro</span>
+                <span *ngIf="bill.type == 1" style="color: blue;">Ingreso</span>
+            </div>
+            <div class="column right top15">
+                <b [ngClass]="{'red': bill.type > 1}" > <span [ngClass]="{'none': bill.type < 2}">-</span> $ {{ bill.value }}</b>
+            </div>
+        </div>
+
+        <div class="buttom_div">
+            <a (click)="delete()" class="buttom">Eliminar</a>
+            <a (click)="close()" class="buttom back">Volver</a>
+        </div>
+        
+    </div>
+
   </div>
 
 
