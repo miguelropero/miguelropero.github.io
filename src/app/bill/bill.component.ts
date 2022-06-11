@@ -25,7 +25,14 @@ export class BillComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.username = params['username'];
-      this.list();
+
+      let sesionUser = localStorage.getItem('username');
+      if(sesionUser == this.username){
+          this.list();
+      }
+      else {
+        this.router.navigate(['/']); 
+      }
     });
     
   }
@@ -89,7 +96,12 @@ export class BillComponentNew implements OnInit {
   });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let sesionUser = localStorage.getItem('username');
+    if(sesionUser !== this.username){
+      this.router.navigate(['/']); 
+    }
+  }
 
   validate(event: Event) {
     

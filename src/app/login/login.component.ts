@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
   });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.clear();
+  }
 
   validate(event: Event) {
     
@@ -44,11 +46,10 @@ export class LoginComponent implements OnInit {
       this.user.username = this.form.value.username;
       this.user.password = this.form.value.password;
 
-      console.log("1236")
-
       this.loginService.login(this.user).subscribe(
         (user: User) => {
           if(user.id){
+            localStorage.setItem('username', user.username);
             this.router.navigate(['/bill/list/' + user.username]);
           }
           else {
