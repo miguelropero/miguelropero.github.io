@@ -1,0 +1,48 @@
+
+<div class="header" style="margin-left: 10px;">
+    <b>Bill Add</b>
+</div>
+
+<div style="margin-top: 15px; margin-bottom: 15px; margin-left: 10px;">
+    Registrar Nuevo Movimiento: {{username}}
+</div>
+
+<hr style="margin-left: 10px;">
+
+<div id="invoice-items-details" class="pt-2">
+    <div>
+      
+        <form class="login_form" [formGroup]="form" (ngSubmit)="validate($event)">
+            <br>
+            <b>Descripción</b>
+            <input class="user_login" formControlName="description" maxlength="15" #description
+            [ngClass]="form?.get('description')?.hasError('required') && form?.get('description')?.touched ? 'input_error': ''">
+
+            <br><br>
+            <b>Tipo de movimiento</b>
+            <br><br>
+            <div class="radio" [ngClass]="form?.get('type')?.hasError('required') && form?.get('type')?.touched ? 'input_error': ''">
+                <input type="radio" value="1" formControlName="type">
+                <span>Ingreso</span>
+                
+                <input type="radio" value="2" formControlName="type">
+                <span>Gasto</span>
+            </div>
+            
+            <br>
+            <b>Valor</b>
+            <input class="user_login" formControlName="value" maxlength="15" #value
+                [ngClass]="form?.get('value')?.hasError('required') && form?.get('value')?.touched ? 'input_error': ''">
+
+                <span *ngIf="malFormato">Formato no válido</span>
+
+
+            <div class="main_button">
+                <button type="submit">Registrar</button>
+            </div>
+
+        </form>
+    </div>                                                    
+  </div>
+
+

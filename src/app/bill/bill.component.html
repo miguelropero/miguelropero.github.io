@@ -1,0 +1,32 @@
+
+<div class="header" style="margin-left: 10px;">
+    <b>Bill List</b>
+</div>
+
+<div style="margin-top: 15px; margin-bottom: 15px; margin-left: 10px;">
+    Listado de bill del usuario: {{username}}
+</div>
+
+<hr style="margin-left: 10px;">
+
+<div id="invoice-items-details" class="pt-2">
+    <div>
+      
+        <div *ngFor="let bill of bills; let i=index">
+            <div class="row">
+                <div class="column">
+                    <span class="font10">{{ bill.date_bill }}</span> <br>
+                    {{ bill.observation }}
+                </div>
+                <div class="column right top15">
+                    <b [ngClass]="{'red': bill.type > 1}" > <span [ngClass]="{'none': bill.type < 2}">-</span> $ {{ bill.value }}</b>
+                </div>
+            </div>
+        </div>
+        <div class="buttom_div">
+            <a [routerLink]="['/bill/new/']" [queryParams]="{username: username}" class="buttom" href="">Registrar</a>
+        </div>
+    </div>                                                    
+  </div>
+
+
